@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # App title
-st.title("📊 CSV File Uploader")
+st.title("📊 Upload your .csv file")
 
 st.markdown(
     """
