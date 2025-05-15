@@ -22,7 +22,8 @@ uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 if uploaded_file is not None:
     try:
         df = pd.read_csv(uploaded_file)
-        st.success("File uploaded successfully!")
+        st.session_state["uploaded_df"] = df  # Save the DataFrame to session state
+        st.success("File uploaded and saved!")
 
         # Show preview of the data
         st.subheader("Preview of Data")
@@ -36,8 +37,6 @@ if uploaded_file is not None:
         st.subheader("Select Columns to Display")
         selected_columns = st.multiselect("Choose columns", df.columns.tolist(), default=df.columns.tolist())
         st.dataframe(df[selected_columns])
-
-        st.line_chart(df[selected_columns])
 
     except Exception as e:
         st.error(f"An error occurred while reading the file: {e}")
