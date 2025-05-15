@@ -37,8 +37,11 @@ if uploaded_file is not None:
         selected_columns = st.multiselect("Choose columns", df.columns.tolist(), default=df.columns.tolist())
         st.dataframe(df[selected_columns])
 
+        st.line_chart(df[selected_columns])
+
     except Exception as e:
         st.error(f"An error occurred while reading the file: {e}")
 else:
     st.info("Awaiting a CSV file upload...")
+
 
