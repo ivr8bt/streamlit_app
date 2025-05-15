@@ -13,3 +13,5 @@ st.markdown(
 
 st.title("Welcome to Sabra Health Analysis App")
 st.write("Use the sidebar to navigate between pages.")
+
+st.image("images/test_image.png", use_column_width=True)
