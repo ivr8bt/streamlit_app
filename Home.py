@@ -7,14 +7,14 @@ st.markdown(
             background-color: #fff9b0;
         }
     </style>
+
+    <div style='text-align: center;'>
+        <h1>Welcome to Sabra Health Analysis App</h1>
+        <h3>Use the sidebar to navigate between pages</h3>
+    </div>
     """,
     unsafe_allow_html=True
 )
 
-col1, col2, col3 = st.columns([1, 6, 1])
-with col2:
-    st.title("Welcome to Sabra Health Analysis App")
-
-st.write("Use the sidebar to navigate between pages.")
 
 st.image("images/test_image.jpg")
