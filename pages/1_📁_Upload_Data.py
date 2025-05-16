@@ -25,9 +25,12 @@ if uploaded_file is not None:
         st.session_state["uploaded_df"] = df  # Save the DataFrame to session state
         st.success("File uploaded and saved!")
 
+        num = st.number_input("Enter how many rows you wan to see", min_value=1, max_value=len(df), value=3, step=1)
+        st.write("You entered:", num)
         # Show preview of the data
         st.subheader("Preview of Data")
-        st.dataframe(df)
+        new_df=df[num:]
+        st.dataframe(new_df)
 
         # Show basic statistics
         st.subheader("Summary Statistics")
