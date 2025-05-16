@@ -1,4 +1,5 @@
 import streamlit as st
+import pyodbc
 
 st.markdown(
     """
@@ -12,3 +13,13 @@ st.markdown(
 )
 
 st.title("Database Upload")
+
+# secrets = st.secrets["database"]
+
+# conn = pyodbc.connect(
+#     f'DRIVER={{ODBC Driver 17 for SQL Server}};'
+#     f'SERVER={secrets.server};'
+#     f'DATABASE={secrets.database};'
+#     f'UID={secrets.username};'
+#     f'PWD={secrets.password}'
+# )
