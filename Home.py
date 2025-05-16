@@ -2,7 +2,7 @@ from PIL import Image
 import streamlit as st
 
 # Open and resize the image
-img = Image.open("images/Sabra_Logopng")
+img = Image.open("images/Sabra_Logo.png")
 
 # Set a new height and calculate width to maintain aspect ratio
 new_height = 200
