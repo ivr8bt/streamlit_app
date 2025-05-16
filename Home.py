@@ -1,7 +1,17 @@
+from PIL import Image
 import streamlit as st
 
+# Open and resize the image
+img = Image.open("images/Sabra_Logopng")
 
-st.image("images/Sabra_Logo.png")
+# Set a new height and calculate width to maintain aspect ratio
+new_height = 200
+aspect_ratio = img.width / img.height
+new_width = int(new_height * aspect_ratio)
+
+# Resize and display
+resized_img = img.resize((new_width, new_height))
+st.image(resized_img)
 
 st.markdown(
     """
