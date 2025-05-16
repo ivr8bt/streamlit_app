@@ -11,7 +11,9 @@ new_width = int(new_height * aspect_ratio)
 
 # Resize and display
 resized_img = img.resize((new_width, new_height))
-st.image(resized_img)
+col1, col2, col3 = st.columns([1, 2, 1])  # Adjust ratios as needed
+with col2:
+    st.image(resized_img, use_column_width=False)
 
 st.markdown(
     """
@@ -23,7 +25,6 @@ st.markdown(
 
     <div style='text-align: center;'>
         <h1>Welcome to Sabra Health Analysis App</h1>
-        <h3>Use the sidebar to navigate between pages</h3>
     </div>
     """,
     unsafe_allow_html=True
