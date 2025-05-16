@@ -1,6 +1,6 @@
 import streamlit as st
-import pandas as pd
-import altair as alt  # or use matplotlib, seaborn, etc.
+import pandas as pd 
+import plotly.express as px 
 
 st.markdown(
     """
@@ -23,8 +23,26 @@ if "uploaded_df" in st.session_state:
     selected_columns = st.multiselect("Choose columns", df.columns.tolist(), default=df.columns.tolist())
     st.dataframe(df[selected_columns])
 
+
+    # Select chart type
+    graph = ["Bar","Line"]
+    graph_type = st.selectbox("Select type of graph", graph)
+
+    x_values = st.selectbox("Select x axis value to plot", df.columns)
+    y_values = st.selectbox("Select y axis value to plot", df.columns)
+    data = pd.DataFrame({
+    'Category': x_values,
+    'Value': y_values
+    })
     # Example: simple plot
-    column = st.selectbox("Select column to plot", df.columns)
-    st.bar_chart(df[column])
+    if graph_type=="bar":
+        # Create Plotly bar chart
+        fig = px.bar(data, x='Category', y='Value', title='Plotly Bar Chart')
+    else:
+        fig = px.line(data, x='Category', y='Value', title='Plotly Line Chart')  
+
+    # Display in Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+
 else:
     st.warning("Please upload a file first on the Upload page.")
