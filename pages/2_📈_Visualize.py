@@ -29,10 +29,12 @@ if "uploaded_df" in st.session_state:
     graph_type = st.selectbox("Select type of graph", graph)
 
     x_values = st.selectbox("Select x axis value to plot", df.columns)
+    x=df['x']
     y_values = st.selectbox("Select y axis value to plot", df.columns)
+    y=df['y']
     data = pd.DataFrame({
-    'Category': x_values,
-    'Value': y_values
+    'Category': x,
+    'Value': y
     })
     # Example: simple plot
     if graph_type=="bar":
