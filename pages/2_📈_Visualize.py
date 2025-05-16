@@ -37,7 +37,7 @@ if "uploaded_df" in st.session_state:
     'Value': y
     })
     # Example: simple plot
-    if graph_type=="bar":
+    if graph_type=="Bar":
         # Create Plotly bar chart
         fig = px.bar(data, x='Category', y='Value', title='Plotly Bar Chart')
     else:
