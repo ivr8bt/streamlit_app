@@ -11,7 +11,7 @@ new_width = int(new_height * aspect_ratio)
 
 # Resize and display
 resized_img = img.resize((new_width, new_height))
-col1, col2, col3 = st.columns([1, 2, 1])  # Adjust ratios as needed
+col1, col2, col3 = st.columns([1, 1, 1])  # Adjust ratios as needed
 with col2:
     st.image(resized_img, use_container_width=False)
 
