@@ -1,11 +1,14 @@
 import streamlit as st
 
+
+st.image("images/Sabra_Logo.png")
+
 st.markdown(
     """
     <style>
-        .stApp {
-            background-color: #fff9b0;
-        }
+     .stApp {
+         background-color: #fff9b0;
+         }
     </style>
 
     <div style='text-align: center;'>
