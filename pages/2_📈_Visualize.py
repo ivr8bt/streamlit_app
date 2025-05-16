@@ -25,9 +25,13 @@ if "uploaded_df" in st.session_state:
 
 
     # Select chart type
-    graph = ["Bar","Line"]
-    graph_type = st.selectbox("Select type of graph", graph)
+    graph_type = st.selectbox("Select type of graph", ["Bar","Line"])
 
+    if graph_type=='Line':
+        g = st.selectbox("Would like to group by different categories?", ["Yes","No"])
+        if g=='Yes':
+            group = st.selectbox("Select categories to group by", df.columns)
+            
     x_values = st.selectbox("Select x axis value to plot", df.columns)
     y_values = st.selectbox("Select y axis value to plot", df.columns)
 
@@ -40,7 +44,15 @@ if "uploaded_df" in st.session_state:
         # Create Plotly bar chart
         fig = px.bar(data, x=x_values, y=y_values, title=f'Bar Graph of {y_values} by {x_values}')
     else:
-        fig = px.line(data, x=x_values, y=y_values, title=f'Line Graph of {y_values} by {x_values}')  
+        if g=='Yes':
+            data = pd.DataFrame({
+                x_values : df[x_values],
+                y_values : df[y_values],
+                group : df[group]
+            })
+            fig = px.line(data, x=x_values, y=y_values, color=group, markers=True, title=f'Line Graph of {y_values} by {x_values} grouped by {group}')
+        else:
+            fig = px.line(data, x=x_values, y=y_values, title=f'Line Graph of {y_values} by {x_values}')  
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
