@@ -1,0 +1,2 @@
+# Streamlit secrets (sensitive credentials)
+.streamlit/secrets.toml
