@@ -55,6 +55,7 @@ if "uploaded_df" in st.session_state:
             fig = px.line(data, x=x_values, y=y_values, title=f'Line Graph of {y_values} by {x_values}')  
 
     # Display in Streamlit
+    fig.update_layout(title={'x': 0.5, 'xanchor': 'center'})
     st.plotly_chart(fig, use_container_width=True)
 
 else:
