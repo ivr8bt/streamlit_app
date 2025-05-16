@@ -29,19 +29,18 @@ if "uploaded_df" in st.session_state:
     graph_type = st.selectbox("Select type of graph", graph)
 
     x_values = st.selectbox("Select x axis value to plot", df.columns)
-    x=df[x_values]
     y_values = st.selectbox("Select y axis value to plot", df.columns)
-    y=df[y_values]
+
     data = pd.DataFrame({
-    'Category': x,
-    'Value': y
+    x_values : df[x_values],
+    y_values : df[y_values]
     })
     # Example: simple plot
     if graph_type=="Bar":
         # Create Plotly bar chart
-        fig = px.bar(data, x='Category', y='Value', title=f'Bar Graph of {y_values} by {x_values}')
+        fig = px.bar(data, x=x_values, y=y_values, title=f'Bar Graph of {y_values} by {x_values}')
     else:
-        fig = px.line(data, x='Category', y='Value', title=f'Line Graph of {y_values} by {x_values}')  
+        fig = px.line(data, x=x_values, y=y_values, title=f'Line Graph of {y_values} by {x_values}')  
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
