@@ -36,11 +36,6 @@ if uploaded_file is not None:
         st.subheader("Summary Statistics")
         st.write(df.describe())
 
-        # Optional: Show column selection
-        st.subheader("Select Columns to Display")
-        selected_columns = st.multiselect("Choose columns", df.columns.tolist(), default=df.columns.tolist())
-        st.dataframe(df[selected_columns])
-
     except Exception as e:
         st.error(f"An error occurred while reading the file: {e}")
 else:

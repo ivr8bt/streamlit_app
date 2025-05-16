@@ -18,8 +18,10 @@ st.title("Plotting Page")
 if "uploaded_df" in st.session_state:
     df = st.session_state["uploaded_df"]
     
-    st.write("Here is your uploaded data:")
-    st.dataframe(df.head())
+    # Optional: Show column selection
+    st.subheader("Select Columns to Display")
+    selected_columns = st.multiselect("Choose columns", df.columns.tolist(), default=df.columns.tolist())
+    st.dataframe(df[selected_columns])
 
     # Example: simple plot
     column = st.selectbox("Select column to plot", df.columns)
