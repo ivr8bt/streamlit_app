@@ -29,9 +29,9 @@ if "uploaded_df" in st.session_state:
     graph_type = st.selectbox("Select type of graph", graph)
 
     x_values = st.selectbox("Select x axis value to plot", df.columns)
-    x=df['x_values']
+    x=df[x_values]
     y_values = st.selectbox("Select y axis value to plot", df.columns)
-    y=df['y_values']
+    y=df[y_values]
     data = pd.DataFrame({
     'Category': x,
     'Value': y
