@@ -39,9 +39,9 @@ if "uploaded_df" in st.session_state:
     # Example: simple plot
     if graph_type=="Bar":
         # Create Plotly bar chart
-        fig = px.bar(data, x='Category', y='Value', title='Plotly Bar Chart')
+        fig = px.bar(data, x='Category', y='Value', title=f'Bar Graph of {y_values} by {x_values}')
     else:
-        fig = px.line(data, x='Category', y='Value', title='Plotly Line Chart')  
+        fig = px.line(data, x='Category', y='Value', title=f'Line Graph of {y_values} by {x_values}')  
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
