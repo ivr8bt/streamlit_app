@@ -29,7 +29,7 @@ if uploaded_file is not None:
         st.write("You entered:", num)
         # Show preview of the data
         st.subheader("Preview of Data")
-        new_df=df[num:]
+        new_df=df[:num]
         st.dataframe(new_df)
 
         # Show basic statistics
