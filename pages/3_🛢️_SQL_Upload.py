@@ -22,25 +22,24 @@ st.markdown(
         100% {opacity:1;}
         }
 
-        @keyframes flipIn {
+         @keyframes growIn {
         from {
-            transform: rotateY(90deg);
+            transform: scale(0.8);
             opacity: 0;
         }
         to {
-            transform: rotateY(0deg);
+            transform: scale(1);
             opacity: 1;
         }
     }
 
-    .flip-in {
-        animation: flipIn 0.6s ease-out;
-        transform-style: preserve-3d;
+    .grow-in {
+        animation: growIn 0.6s ease-out;
     }
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='flip-in'>Database Upload</h1>
+        <h1 class='grow-in'>Database Upload</h1>
     </div>
     """,
     unsafe_allow_html=True

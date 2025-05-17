@@ -22,10 +22,25 @@ st.markdown(
         100% {opacity:1;}
         }
 
+         @keyframes growIn {
+        from {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .grow-in {
+        animation: growIn 0.6s ease-out;
+    }
+
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='fade-in'>Plotting Page</h1>
+        <h1 class='grow-in'>Plotting Page</h1>
     </div>
     """,
     unsafe_allow_html=True
