@@ -21,10 +21,25 @@ st.markdown(
         0% {opacity:0;}
         100% {opacity:1;}
         }
+
+        @keyframes slideInLeft {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .slide-in-left {
+        animation: slideInLeft 1s ease-out;
+    }
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='fade-in'>Database Upload</h1>
+        <h1 class='slide-in-left'>Database Upload</h1>
     </div>
     """,
     unsafe_allow_html=True
