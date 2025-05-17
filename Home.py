@@ -32,8 +32,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-import time
-
 def type_writer(text, delay=0.05):
     output = ""
     for char in text:
