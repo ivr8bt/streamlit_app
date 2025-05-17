@@ -22,30 +22,10 @@ st.markdown(
         100% {opacity:1;}
         }
 
-        @keyframes bounceIn {
-        0% {
-            transform: scale(0.3);
-            opacity: 0;
-        }
-        50% {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-        70% {
-            transform: scale(0.9);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    .bounce-in {
-        animation: bounceIn 0.8s ease-out;
-    }
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='bounce-in'>Plotting Page</h1>
+        <h1 class='fade-in'>Plotting Page</h1>
     </div>
     """,
     unsafe_allow_html=True

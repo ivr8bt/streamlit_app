@@ -22,24 +22,25 @@ st.markdown(
         100% {opacity:1;}
         }
 
-        @keyframes slideInLeft {
+        @keyframes flipIn {
         from {
-            transform: translateX(-100%);
+            transform: rotateY(90deg);
             opacity: 0;
         }
         to {
-            transform: translateX(0);
+            transform: rotateY(0deg);
             opacity: 1;
         }
     }
 
-    .slide-in-left {
-        animation: slideInLeft 1s ease-out;
+    .flip-in {
+        animation: flipIn 0.6s ease-out;
+        transform-style: preserve-3d;
     }
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='slide-in-left'>Database Upload</h1>
+        <h1 class='flip-in-left'>Database Upload</h1>
     </div>
     """,
     unsafe_allow_html=True
