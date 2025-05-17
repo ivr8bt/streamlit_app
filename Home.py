@@ -1,5 +1,6 @@
 from PIL import Image
 import streamlit as st
+import time
 
 # Open and resize the image
 img = Image.open("images/Sabra_Logo.png")
@@ -31,5 +32,21 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+import time
+
+def type_writer(text, delay=0.05):
+    output = ""
+    for char in text:
+        output += char
+        st.markdown(f"<h3 style='font-family:sans-serif;'>{output}</h3>", unsafe_allow_html=True)
+        time.sleep(delay)
+        st.experimental_rerun()  # Uncomment only if you control the loop
+
+# Basic version (without rerun loop)
+typed_text = ""
+for char in "Welcome to the Dashboard":
+    typed_text += char
+    st.markdown(f"<h3 style='font-family:sans-serif;'>{typed_text}</h3>", unsafe_allow_html=True)
+    time.sleep(0.05)
 
 st.image("images/test_image.jpg")
