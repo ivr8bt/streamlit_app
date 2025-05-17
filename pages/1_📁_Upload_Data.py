@@ -4,17 +4,6 @@ import pandas as pd
 # App title
 st.title("Upload your .csv file")
 
-st.markdown(
-    """
-    <style>
-        .stApp {
-            background-color: #fff9b0;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # File uploader
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 
