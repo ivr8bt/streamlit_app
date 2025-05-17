@@ -23,30 +23,24 @@ st.markdown(
             secondaryBackgroundColor= #32CD32;
         }
 
-         @keyframes bounceIn {
-        0% {
-            transform: scale(0.3);
+        @keyframes growIn {
+        from {
+            transform: scale(0.8);
             opacity: 0;
         }
-        50% {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-        70% {
-            transform: scale(0.9);
-        }
-        100% {
+        to {
             transform: scale(1);
+            opacity: 1;
         }
     }
 
-    .bounce-in {
-        animation: bounceIn 0.8s ease-out;
+    .grow-in {
+        animation: growIn 0.6s ease-out;
     }
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='bounce-in'>Welcome to Sabra Health Analysis App</h1>
+        <h1 class='grow-in'>Welcome to Sabra Health Analysis App</h1>
     </div>
     """,
     unsafe_allow_html=True

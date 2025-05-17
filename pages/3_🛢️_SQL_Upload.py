@@ -40,7 +40,7 @@ st.markdown(
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='flip-in-left'>Database Upload</h1>
+        <h1 class='flip-in'>Database Upload</h1>
     </div>
     """,
     unsafe_allow_html=True
