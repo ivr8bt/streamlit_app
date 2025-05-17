@@ -57,6 +57,7 @@ if "uploaded_df" in st.session_state:
     
     # secrets = st.secrets["database"]
 
+    #Set up connection to database
     # conn = pyodbc.connect(
     #     f'DRIVER={{ODBC Driver 17 for SQL Server}};'
     #     f'SERVER={secrets.server};'
@@ -64,6 +65,16 @@ if "uploaded_df" in st.session_state:
     #     f'UID={secrets.username};'
     #     f'PWD={secrets.password}'
     # )
+
+    # result = conn.execute("SELECT * FROM your_table_name LIMIT 1")
+    # cols = list(result.keys())
+    # df_cols = df.columns.tolist()
+    # if df_cols==cols:
+    #     # Insert database into SQL
+    #     df.to_sql(df, con=conn, if_exists='append', index=False)
+    # else:
+    #     st.warning("Column names must match for proper insert")
+
 
 else:
     st.warning("Please upload a file first on the Upload page.")
