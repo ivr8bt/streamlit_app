@@ -23,22 +23,24 @@ st.markdown(
             secondaryBackgroundColor= #32CD32;
         }
 
-        .fade-in {
-        animation: fadeIn 2s;
-        -webkit-animation: fadeIn 2s;
-        -moz-animation: fadeIn 2s;
-        -o-animation: fadeIn 2s;
-        -ms-animation: fadeIn 2s;
+        @keyframes growIn {
+        from {
+            transform: scale(0.8);
+            opacity: 0;
         }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
 
-    @keyframes fadeIn {
-        0% {opacity:0;}
-        100% {opacity:1;}
-        }
+    .grow-in {
+        animation: growIn 0.6s ease-out;
+    }
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='fade-in'>Welcome to Sabra Health Analysis App</h1>
+        <h1 class='grow-in'>Welcome to Sabra Health Analysis App</h1>
     </div>
     """,
     unsafe_allow_html=True
