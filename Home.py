@@ -1,6 +1,5 @@
 from PIL import Image
 import streamlit as st
-import time
 
 # Open and resize the image
 img = Image.open("images/Sabra_Logo.png")
@@ -23,28 +22,27 @@ st.markdown(
             background-color: #fff9b0;
             secondaryBackgroundColor= #32CD32;
         }
+
+        .fade-in {
+        animation: fadeIn 2s;
+        -webkit-animation: fadeIn 2s;
+        -moz-animation: fadeIn 2s;
+        -o-animation: fadeIn 2s;
+        -ms-animation: fadeIn 2s;
+        }
+
+    @keyframes fadeIn {
+        0% {opacity:0;}
+        100% {opacity:1;}
+        }
     </style>
 
     <div style='text-align: center;'>
-        <h1>Welcome to Sabra Health Analysis App</h1>
+        <h1 class='fade-in'>Welcome to Sabra Health Analysis App</h1>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-def type_writer(text, delay=0.05):
-    output = ""
-    for char in text:
-        output += char
-        st.markdown(f"<h3 style='font-family:sans-serif;'>{output}</h3>", unsafe_allow_html=True)
-        time.sleep(delay)
-        st.experimental_rerun()  # Uncomment only if you control the loop
-
-# Basic version (without rerun loop)
-typed_text = ""
-for char in "Welcome to the Dashboard":
-    typed_text += char
-    st.markdown(f"<h3 style='font-family:sans-serif;'>{typed_text}</h3>", unsafe_allow_html=True)
-    time.sleep(0.05)
 
 st.image("images/test_image.jpg")
