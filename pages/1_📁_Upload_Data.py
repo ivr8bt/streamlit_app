@@ -1,6 +1,18 @@
 import streamlit as st
 import pandas as pd
 
+st.markdown(
+    """
+    <style>
+        .stApp {
+            background-color: #fff9b0;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # App title
 st.title("Upload your .csv file")
 

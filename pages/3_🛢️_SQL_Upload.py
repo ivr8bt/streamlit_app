@@ -2,8 +2,19 @@ import streamlit as st
 import pandas as pd
 #import pyodbc You will need this in the actual implementation
 
-st.title("Database Upload")
+st.markdown(
+    """
+    <style>
+        .stApp {
+            background-color: #fff9b0;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
+
+st.title("Database Upload")
 
 if "uploaded_df" in st.session_state:
     df = st.session_state["uploaded_df"]

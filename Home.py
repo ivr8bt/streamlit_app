@@ -17,6 +17,13 @@ with col2:
 
 st.markdown(
     """
+    <style>
+        .stApp {
+            background-color: #1E1E1E;
+            color: white;
+        }
+    </style>
+
     <div style='text-align: center;'>
         <h1>Welcome to Sabra Health Analysis App</h1>
     </div>

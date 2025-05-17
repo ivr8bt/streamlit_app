@@ -2,6 +2,18 @@ import streamlit as st
 import pandas as pd 
 import plotly.express as px 
 
+st.markdown(
+    """
+    <style>
+        .stApp {
+            background-color: #fff9b0;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 st.title("Plotting Page")
 
 if "uploaded_df" in st.session_state:
