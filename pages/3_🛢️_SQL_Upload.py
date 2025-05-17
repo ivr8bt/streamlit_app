@@ -8,13 +8,27 @@ st.markdown(
         .stApp {
             background-color: #fff9b0;
         }
+
+        .fade-in {
+        animation: fadeIn 2s;
+        -webkit-animation: fadeIn 2s;
+        -moz-animation: fadeIn 2s;
+        -o-animation: fadeIn 2s;
+        -ms-animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+        0% {opacity:0;}
+        100% {opacity:1;}
+        }
     </style>
+
+    <div style='text-align: center;'>
+        <h1 class='fade-in'>Database Upload</h1>
+    </div>
     """,
     unsafe_allow_html=True
 )
-
-
-st.title("Database Upload")
 
 if "uploaded_df" in st.session_state:
     df = st.session_state["uploaded_df"]
