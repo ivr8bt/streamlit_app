@@ -1,5 +1,5 @@
 import streamlit as st
-import pyodbc
+#import pyodbc
 
 st.markdown(
     """
@@ -13,6 +13,12 @@ st.markdown(
 )
 
 st.title("Database Upload")
+
+ # Show column selection
+st.subheader("Select Columns to Display")
+selected_columns = st.multiselect("Choose columns", df.columns.tolist(), default=df.columns.tolist())
+st.dataframe(df[selected_columns])
+
 
 # secrets = st.secrets["database"]
 
