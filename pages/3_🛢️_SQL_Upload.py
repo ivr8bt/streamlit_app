@@ -83,8 +83,7 @@ if "uploaded_df" in st.session_state:
             if n=='Yes':
                 for col in difference:
                     df[col] = [None] * len(df)
-                df=df[col_names]
-                st.warning(f'{df.columns}')
+                df = df[[col for col in col_names if col in df.columns]]
             else:
                 # Sends warning and then stops execution because .csv must be changed before insertion
                 st.warning("Change column names in .csv before database insertion")
