@@ -83,7 +83,7 @@ if "uploaded_df" in st.session_state:
             if n=='Yes':
                 for col in difference:
                     df[col] = None
-                df = df[col_names]
+                df = df[['entity', 'account', 'dataSource', 'value', 'timeID', 'createDate', 'updatedAt']]
             else:
                 # Sends warning and then stops execution because .csv must be changed before insertion
                 st.warning("Change column names in .csv before database insertion")
