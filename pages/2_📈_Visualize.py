@@ -60,6 +60,7 @@ if "uploaded_df" in st.session_state:
     graph_type = st.selectbox("Select type of graph", ["Bar","Line"])
 
     if graph_type=='Line':
+        # Group by a variable, if applciable
         g = st.selectbox("Would like to group by different categories?", ["Yes","No"])
         if g=='Yes':
             group = st.selectbox("Select categories to group by", df.columns)
@@ -67,11 +68,12 @@ if "uploaded_df" in st.session_state:
     x_values = st.selectbox("Select x axis value to plot", df.columns)
     y_values = st.selectbox("Select y axis value to plot", df.columns)
 
+    # Data to plot
     data = pd.DataFrame({
     x_values : df[x_values],
     y_values : df[y_values]
     })
-    # Example: simple plot
+
     if graph_type=="Bar":
         # Create Plotly bar chart
         fig = px.bar(data, x=x_values, y=y_values, title=f'Bar Graph of {y_values} by {x_values}')

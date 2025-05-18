@@ -74,22 +74,26 @@ if "uploaded_df" in st.session_state:
 
     upload = st.selectbox("Would like to upload to the database?", ["Yes","No"])
     df_cols=list(df.columns)
+    # Missing columns
     difference = list(set(col_names) - set(df_cols))
+    # Extra columns
     difference2 = list(set(df_cols) - set(col_names))
     if upload=='Yes':
         if difference:
+            # Warns about missing columns
             st.warning(f'Missing columns {difference}')
             n = st.selectbox("Would like to add in null values for these columns?", ["Yes","No"])
+            # Adds in null
             if n=='Yes':
                 for col in difference:
                     df[col] = None
-                df = df[['entity', 'account', 'dataSource', 'value', 'timeID', 'createDate', 'updatedAt']]
+                df = df[col_names]
             else:
                 # Sends warning and then stops execution because .csv must be changed before insertion
                 st.warning("Change column names in .csv before database insertion")
                 st.stop()
         elif difference2:
-            st.warning(f'Extra columns {difference2}')
+            st.warning(f'Deleting extra columns {difference2}')
             # If there are columns missing then they should already be dealt with
             # If there are extra columns this will get rid of them
             df=df[col_names]
@@ -97,6 +101,7 @@ if "uploaded_df" in st.session_state:
         # Checking columns types 
         expected_types=[str,int,str,float,str,str,str]
 
+        # Function to validate column types
         def validate_column_types(data, expected) -> bool:
             message=False
             for col, expected in zip(data.columns, expected):
