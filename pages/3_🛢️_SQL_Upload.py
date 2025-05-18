@@ -71,19 +71,19 @@ if "uploaded_df" in st.session_state:
 
     #Checking columns names
     col_names = ['entity', 'account', 'dataSource', 'value', 'timeID', 'createDate', 'updatedAt']
+
+    upload = st.selectbox("Would like to upload to the database?", ["Yes","No"])
     df_cols=list(df.columns)
     difference = list(set(col_names) - set(df_cols))
     difference2 = list(set(df_cols) - set(col_names))
-
-    upload = st.selectbox("Would like to upload to the database?", ["Yes","No"])
     if upload=='Yes':
         if difference:
             st.warning(f'Missing columns {difference}')
             n = st.selectbox("Would like to add in null values for these columns?", ["Yes","No"])
             if n=='Yes':
                 for col in difference:
-                    df[col] = [None] * len(df)
-                df = df[[col for col in col_names if col in df.columns]]
+                    df[col] = None
+                df = df[col_names]
             else:
                 # Sends warning and then stops execution because .csv must be changed before insertion
                 st.warning("Change column names in .csv before database insertion")
@@ -97,10 +97,10 @@ if "uploaded_df" in st.session_state:
         # Checking columns types 
         expected_types=[str,int,str,float,str,str,str]
 
-        def validate_column_types(df, expected) -> bool:
+        def validate_column_types(data, expected) -> bool:
             message=False
-            for col, expected in zip(df.columns, expected):
-                for i, val in enumerate(df[col]):
+            for col, expected in zip(data.columns, expected):
+                for i, val in enumerate(data[col]):
                     if pd.isnull(val):
                         continue  # Acceptable null value
                     if not isinstance(val, expected):
