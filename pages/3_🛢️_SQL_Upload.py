@@ -72,7 +72,7 @@ if "uploaded_df" in st.session_state:
     #Checking columns names
     col_names = ['entity', 'account', 'dataSource', 'value', 'timeID', 'createDate', 'updatedAt']
 
-    upload = st.selectbox("Would like to upload to the database?", ["Yes","No"])
+    upload = st.selectbox("Would like to upload to the database?", ["No","Yes"])
     df_cols=list(df.columns)
     # Missing columns
     difference = list(set(col_names) - set(df_cols))
@@ -82,7 +82,7 @@ if "uploaded_df" in st.session_state:
         if difference:
             # Warns about missing columns
             st.warning(f'Missing columns {difference}')
-            n = st.selectbox("Would like to add in null values for these columns?", ["Yes","No"])
+            n = st.selectbox("Would like to add in null values for these columns?", ["No","Yes"])
             # Adds in null
             if n=='Yes':
                 for col in difference:
