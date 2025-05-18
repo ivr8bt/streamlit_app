@@ -74,51 +74,54 @@ if "uploaded_df" in st.session_state:
     df_cols=list(df.columns)
     difference = list(set(col_names) - set(df_cols))
     difference2 = list(set(df_cols) - set(col_names))
-    if difference:
-        st.warning(f'Missing columns {difference}')
-        n = st.selectbox("Would like to add in null values for these columns?", ["Yes","No"])
-        if n=='Yes':
-            for col in difference:
-                df[col] = [None] * len(df)
+
+    upload = st.selectbox("Would like to upload to the database?", ["Yes","No"])
+    if upload=='Yes':
+        if difference:
+            st.warning(f'Missing columns {difference}')
+            n = st.selectbox("Would like to add in null values for these columns?", ["Yes","No"])
+            if n=='Yes':
+                for col in difference:
+                    df[col] = [None] * len(df)
+                df=df[col_names]
+            else:
+                # Sends warning and then stops execution because .csv must be changed before insertion
+                st.warning("Change column names in .csv before database insertion")
+                st.stop()
+        elif difference2:
+            st.warning(f'Extra columns {difference2}')
+            # If there are columns missing then they should already be dealt with
+            # If there are extra columns this will get rid of them
             df=df[col_names]
-        else:
-            # Sends warning and then stops execution because .csv must be changed before insertion
-            st.warning("Change column names in .csv before database insertion")
+
+        # Checking columns types 
+        expected_types=[str,int,str,float,str,str,str]
+
+        def validate_column_types(df, expected) -> bool:
+            message=False
+            for col, expected in zip(df.columns, expected):
+                for i, val in enumerate(df[col]):
+                    if pd.isnull(val):
+                        continue  # Acceptable null value
+                    if not isinstance(val, expected):
+                        print(
+                            st.warning(f"Type mismatch in column '{col}': expected {expected.__name__}, got {type(val).__name__}")
+                        )
+                        message=True
+                        break
+            if message:
+                return True
+            
+        if validate_column_types(df,expected_types):
+            st.warning("Fix type mismatch")
             st.stop()
-    elif difference2:
-        st.warning(f'Extra columns {difference2}')
-        # If there are columns missing then they should already be dealt with
-        # If there are extra columns this will get rid of them
-        df=df[col_names]
-
-    # Checking columns types 
-    expected_types=[str,int,str,float,str,str,str]
-
-    def validate_column_types(df, expected) -> bool:
-        message=False
-        for col, expected in zip(df.columns, expected):
-            for i, val in enumerate(df[col]):
-                if pd.isnull(val):
-                    continue  # Acceptable null value
-                if not isinstance(val, expected):
-                    print(
-                        st.warning(f"Type mismatch in column '{col}': expected {expected.__name__}, got {type(val).__name__}")
-                    )
-                    message=True
-                    break
-        if message:
-            return True
-        
-    if validate_column_types(df,expected_types):
-        st.warning("Fix type mismatch")
-        st.stop()
-    else:
-        # Change string to datetime before SQL insertion
-        df['timeID'] = pd.to_datetime(df['timeID'])
-        df['createDate'] = pd.to_datetime(df['createDate'])
-        df['updatedAt'] = pd.to_datetime(df['updatedAt'])
-        # Insert database into SQL
-        # df.to_sql(df, con=conn, if_exists='append', index=False)
+        else:
+            # Change string to datetime before SQL insertion
+            df['timeID'] = pd.to_datetime(df['timeID'])
+            df['createDate'] = pd.to_datetime(df['createDate'])
+            df['updatedAt'] = pd.to_datetime(df['updatedAt'])
+            # Insert database into SQL
+            # df.to_sql(df, con=conn, if_exists='append', index=False)
 
 
 else:
