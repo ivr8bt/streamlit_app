@@ -39,7 +39,7 @@ st.markdown(
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='grow-in'>Database Upload</h1>
+        <h1 class='grow-in'>SQL Server Upload</h1>
     </div>
     """,
     unsafe_allow_html=True
