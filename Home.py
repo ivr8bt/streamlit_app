@@ -44,5 +44,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.write("Use the sidebar to navigate between the pages. Start with uploading your .csv file and then you can plot values and upload to SQL Server.")
 
 st.image("images/test_image.jpg")
