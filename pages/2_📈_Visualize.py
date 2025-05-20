@@ -68,8 +68,8 @@ if "uploaded_df" in st.session_state:
     x_values = st.selectbox("Select x axis value to plot", df.columns)
     y_values = st.selectbox("Select y axis value to plot", df.columns)
 
-    y_min = st.number_input("Enter minimum y value", min_value=0, max_value=max(df[y_values]), value=0, step=100)
-    y_max = st.number_input("Enter maximum y value", min_value=100, max_value=max(df[y_values]), value=max(df[y_values]), step=100)
+    #y_min = st.number_input("Enter minimum y value", min_value=0, max_value=max(df[y_values]), value=0, step=100)
+    #y_max = st.number_input("Enter maximum y value", min_value=100, max_value=max(df[y_values]), value=max(df[y_values]), step=100)
     # Data to plot
     data = pd.DataFrame({
     x_values : df[x_values],
@@ -92,7 +92,7 @@ if "uploaded_df" in st.session_state:
 
     # Display in Streamlit
     fig.update_layout(title={'x': 0.5, 'xanchor': 'center'})
-    fig.update_yaxes(range=[y_min, y_max])
+    #fig.update_yaxes(range=[y_min, y_max])
     st.plotly_chart(fig, use_container_width=True)
 
 else:
