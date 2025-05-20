@@ -38,7 +38,7 @@ st.markdown(
     </style>
 
     <div style='text-align: center;'>
-        <h1 class='fade-in'>Welcome to Sabra Health Analysis App</h1>
+        <title class='fade-in'>Welcome to Sabra Health Analysis App</title>
         <h3>Use the sidebar to navigate between the pages. 
         Start with uploading your .csv file and then you can plot values and upload to SQL Server.</h3>
     </div>
